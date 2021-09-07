@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import { render } from "react-dom";
 import Main from "./components/Main";
 import AddScreen from "./components/Main/Add";
+import Save from "./components/Main/Save";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmaIFCJiB1jzAI-8LCp2widK7ZEpe8IJs",
@@ -29,7 +30,7 @@ if (firebase.apps.length === 0) {
 
 const Stack = createStackNavigator();
 
-const App = () => {
+const App = (props) => {
   const [loaded, setLoaded] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   useEffect(() => {
@@ -38,7 +39,7 @@ const App = () => {
         setLoaded(true);
         setLoggedIn(false);
       } else {
-        console.log("user", user);
+        // console.log("user", user);
         setLoaded(true);
         setLoggedIn(true);
       }
@@ -75,7 +76,16 @@ const App = () => {
             component={Main}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="AddScreen" component={AddScreen} />
+          <Stack.Screen
+            name="AddScreen"
+            component={AddScreen}
+            navigation={props.navigation}
+          />
+          <Stack.Screen
+            name="Save"
+            component={Save}
+            navigation={props.navigation}
+          />
         </Stack.Navigator>
       </Provider>
     </NavigationContainer>

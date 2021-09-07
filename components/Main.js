@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import fetchUser from "./../redux/actions/index";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FeedScreen from "./Main/Feed";
 import ProfileScreen from "./Main/Profile";
 import AddScreen from "./Main/Add";
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const EmptyScreen = () => {
   return null;
@@ -19,7 +19,7 @@ const EmptyScreen = () => {
 const Main = () => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.userState);
-  console.log("users", currentUser);
+  // console.log("users", currentUser);
   useEffect(() => {
     dispatch(fetchUser());
   }, []);
