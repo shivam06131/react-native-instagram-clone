@@ -74,7 +74,7 @@ const App = (props) => {
           <Stack.Screen
             name="Main"
             component={Main}
-            options={{ headerShown: false }}
+            // options={{ headerShown: false }}
           />
           <Stack.Screen
             name="AddScreen"

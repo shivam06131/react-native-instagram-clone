@@ -15,7 +15,7 @@ const Save = (props) => {
       firebase.auth().currentUser.uid
     }/${Math.random().toString(36)}`;
 
-    console.log("childPath", childPath);
+    // console.log("childPath", childPath);
 
     const task = firebase.storage().ref().child(childPath).put(blob);
 
@@ -46,7 +46,7 @@ const Save = (props) => {
         creation: firebase.firestore.FieldValue.serverTimestamp(),
       })
       .then(() => {
-        console.log("inside then");
+        // console.log("inside then");
         props.navigation.popToTop();
       });
   };

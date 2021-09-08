@@ -1,8 +1,8 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { USER_STATE_CHANGE } from "../constants/index";
+import { USER_STATE_CHANGE, USER_POSTS_STATE_CHANGE } from "../constants/index";
 
-const fetchUser = () => (dispatch) => {
+export const fetchUser = () => (dispatch) => {
   firebase
     .firestore()
     .collection("users")
@@ -18,4 +18,22 @@ const fetchUser = () => (dispatch) => {
     })
     .catch((e) => console.log("error", e));
 };
-export default fetchUser;
+export const fetchUserPosts = () => (dispatch) => {
+  firebase
+    .firestore()
+    .collection("posts")
+    .doc(firebase.auth().currentUser.uid)
+    .collection("userPosts")
+    .orderBy("creation", "asc")
+    .get()
+    .then((snapshot) => {
+      const posts = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        const id = doc.id;
+        return { id, ...data };
+      });
+      console.log("posts in fetchUserPosts", posts);
+      dispatch({ type: USER_POSTS_STATE_CHANGE, payload: posts });
+    })
+    .catch((e) => console.log("error", e));
+};
