@@ -2,7 +2,11 @@ import React from "react";
 import { useEffect } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchUser, fetchUserPosts } from "./../redux/actions/index";
+import {
+  fetchUser,
+  fetchUserFollowing,
+  fetchUserPosts,
+} from "./../redux/actions/index";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import FeedScreen from "./Main/Feed";
@@ -24,6 +28,7 @@ const Main = (props) => {
   useEffect(() => {
     dispatch(fetchUser());
     dispatch(fetchUserPosts());
+    dispatch(fetchUserFollowing());
   }, []);
   return (
     <Tab.Navigator>

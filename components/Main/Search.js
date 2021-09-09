@@ -21,7 +21,6 @@ const Search = (props) => {
           return { id, ...data };
         });
         setUsers(users);
-        console.log("users", users);
       });
   };
   return (
