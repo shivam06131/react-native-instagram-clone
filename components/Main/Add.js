@@ -21,7 +21,7 @@ export default function App({ navigation }) {
     // console.log("camera", camera);
     if (camera) {
       const data = await camera.takePictureAsync(null);
-      console.log("image clicked");
+      // console.log("image clicked");
       setImage(data.uri);
     }
   };
@@ -51,7 +51,7 @@ export default function App({ navigation }) {
       quality: 1,
     });
 
-    console.log("result: ", result);
+    // console.log("result: ", result);
 
     if (!result.cancelled) {
       setImage(result.uri);
