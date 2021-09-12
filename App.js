@@ -4,6 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LandingPage from "./components/auth/LandingPage";
+import LoginPage from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import { Provider } from "react-redux";
 import { Store } from "./redux/store";
@@ -63,6 +64,7 @@ const App = (props) => {
             options={{ headerShown: false }}
           />
           <Stack.Screen name="Register" component={Register} />
+          <Stack.Screen name="Login" component={LoginPage} />
         </Stack.Navigator>
       </NavigationContainer>
     );
